@@ -8,4 +8,4 @@ class TestSingleton(unittest.TestCase):
     def test_instance(self):
         singleton1=Singleton.instance()
         singleton2=Singleton.instance()
-        self.assertEquals(id(singleton1),id(singleton2))
+        self.assertEqual(id(singleton1),id(singleton2))
