@@ -1,7 +1,7 @@
 from unittest import TestCase
 from state import *
 
-class AbstractFactoryTest(TestCase):
+class StateTest(TestCase):
     
     def test_can_connect(self):
         phone=CellPhone(WifiTurnedOnState())
