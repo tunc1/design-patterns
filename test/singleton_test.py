@@ -1,7 +1,7 @@
 import unittest
 from singleton import Singleton
 
-class TestSingleton(unittest.TestCase):
+class SingletonTest(unittest.TestCase):
     def test_new(self):
         self.assertRaises(RuntimeError,Singleton.__new__,Singleton)
     
