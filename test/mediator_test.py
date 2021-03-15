@@ -1,7 +1,7 @@
 from unittest import TestCase
 from mediator import *
 
-class AbstractFactoryTest(TestCase):
+class MediatorTest(TestCase):
     
     def test_can_land(self):
         plane=Plane()
