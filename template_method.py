@@ -3,10 +3,7 @@ from abc import ABC,abstractmethod
 class SignIn(ABC):
     
     def sign_in(self,username,password):
-        if self.check(username,password):
-            return True
-        else:
-            return False
+        return self.check(username,password)
     
     @abstractmethod
     def check(self,username,password):
@@ -16,14 +13,10 @@ class GithubSignIn(SignIn):
     
     def check(self,username,password):
         print("Checking password and username for github")
-        if username=="github" and password=="password":
-            return True
-        return False
+        return username=="github" and password=="password"
 
 class TwitterSignIn(SignIn):
     
     def check(self,username,password):
         print("Checking password and username for twitter")
-        if username=="twitter" and password=="password":
-            return True
-        return False
+        return username=="twitter" and password=="password"
