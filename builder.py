@@ -12,8 +12,8 @@ class PDFWriter:
 class WordPDFConverter:
     
     def convert(self,word,pdf):
-        content=self.word_reader(word)
-        self.pdf_writer(content,pdf)
+        content=self.word_reader.read(word)
+        self.pdf_writer.write(content,pdf)
 
 class WordPDFConverterBuilder:
     
