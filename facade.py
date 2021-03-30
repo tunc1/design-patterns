@@ -1,13 +1,12 @@
 class WordReader:
     
     def read(self,file):
-        print("Reading from ",file)
         return "content"
 
 class PDFWriter:
     
     def write(self,content,file):
-        print("Writing to ",file)
+        print("Writing to",file)
 
 class WordPDFConverter:
     
@@ -16,5 +15,6 @@ class WordPDFConverter:
         self.pdf_writer=PDFWriter()
     
     def convert(self,word,pdf):
-        content=self.word_reader(word)
-        self.pdf_writer(content,pdf)
+        content=self.word_reader.read(word)
+        print("Reading from",word)
+        self.pdf_writer.write(content,pdf)
