@@ -21,23 +21,25 @@ class EnemyNormalShip(EnemyShip):
 class ShipFactory(ABC):
     
     @abstractmethod
-    def create(self,ship_type):
+    def create_player_ship(self):
         pass
 
-class PlayerShipFactory(ShipFactory):
-    
-    def create(self,ship_type):
-        if ship_type=="normal":
-            return PlayerNormalShip()
-        elif ship_type=="weaponed":
-            return PlayerWeaponedShip()
-        return None
+    @abstractmethod
+    def create_enemy_ship(self):
+        pass
 
-class EnemyShipFactory(ShipFactory):
-    
-    def create(self,ship_type):
-        if ship_type=="normal":
-            return EnemyNormalShip()
-        elif ship_type=="weaponed":
-            return EnemyWeaponedShip()
-        return None
+class WeaponedShipFactory(ShipFactory):
+
+    def create_player_ship(self):
+        return PlayerWeaponedShip()
+
+    def create_enemy_ship(self):
+        return EnemyWeaponedShip()
+
+class NormalShipFactory(ShipFactory):
+
+    def create_player_ship(self):
+        return PlayerNormalShip()
+
+    def create_enemy_ship(self):
+        return EnemyNormalShip()
