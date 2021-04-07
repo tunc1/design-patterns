@@ -1,15 +1,14 @@
 from unittest import TestCase
-from proxy import Repository,RepositoryProxy
-from io import StringIO
-import sys
+from proxy import RepositoryProxy,Repository
+from unittest.mock import Mock
 
 class ProxyTest(TestCase):
 
     def test_get(self):
-        repositoryProxy=RepositoryProxy(Repository())
-        stringIO=StringIO()
-        sys.stdout=stringIO
-        repositoryProxy.get()
-        self.assertEquals(stringIO.getvalue(),"fetching from db\n")
-        repositoryProxy.get()
-        self.assertEquals(stringIO.getvalue(),"fetching from db\nfetching from proxy\n")
+        repository=Repository()
+        repository_mock=Mock()
+        repository_mock.get.return_value=repository.get()
+        repository_proxy=RepositoryProxy(repository_mock)
+        self.assertEqual(repository_proxy.get(),repository.get())
+        self.assertEqual(repository_proxy.get(),repository.get())
+        repository_mock.get.assert_called_once()

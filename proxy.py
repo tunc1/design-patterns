@@ -9,7 +9,6 @@ class AbstractRepository(ABC):
 class Repository(AbstractRepository):
     
     def get(self):
-        print("fetching from db")
         return "Data"
 
 class RepositoryProxy(AbstractRepository):
@@ -21,6 +20,4 @@ class RepositoryProxy(AbstractRepository):
     def get(self):
         if self.data==None:
             self.data=self.repository.get()
-        else:
-            print("fetching from proxy")
         return self.data
